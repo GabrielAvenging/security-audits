@@ -1,6 +1,6 @@
 # Security Audits
 
-Public collection of defensive secure source-code reviews, including independent limited reviews.
+Public collection of defensive secure source-code reviews, including independent limited reviews and recorded baseline tests.
 
 | Audit | Target | Commit / range | Date |
 |---|---|---|---|
@@ -14,6 +14,7 @@ Public collection of defensive secure source-code reviews, including independent
 | [GammaSwap DeltaSwap V2 (limited review)](./gammaswap/) | https://github.com/gammaswap/v2-deltaswap | `b20ce4d` | 2026-11-05 |
 | [Nexus Mutual (limited review)](./nexus-mutual/) | https://github.com/NexusMutual/smart-contracts | `9e88562` on `release-candidate` | 2026-11-05 |
 | [Flux Finance (limited review)](./flux-finance/) | https://github.com/flux-finance/contracts | docs review unpinned; setup inspection `05bba79` (tests not executed) | 2026-11-06 |
+| [deBridge contracts-v1 (baseline test)](./debridge/) | https://github.com/debridge-finance/debridge-contracts-v1 | `2e9f9c7` | 2026-11-06 |
 
 ## Notes
 
@@ -22,3 +23,4 @@ Public collection of defensive secure source-code reviews, including independent
 - Findings and recommended fixes, when present, are intended for operators and maintainers hardening their deployments.
 - Origin ARM, dHEDGE, GammaSwap, and Nexus Mutual (2026-11-05) and Flux Finance (2026-11-06) are independent limited reviews. The status line for each is: "No validated reportable finding in this bounded review; production applicability not established." Read the linked write-up for the exact slice, recorded checks, and limits. They are not commissioned audits, coverage certificates, project endorsements, or accepted bounty reports.
 - The Flux Finance row splits two passes. The documented review pinned no commit. The later setup inspection is pinned at `05bba79` and is labeled "test setup attempted, not executed (fork-dependent fixtures)." That pin does not cover the unpinned documented review, and no Flux test is recorded as passed or failed.
+- deBridge contracts-v1 (2026-11-06) is a baseline run of the existing `test/00_SignatureVerifier.test.js` suite: 16 passing, 0 failing. It is not a security review and does not record a vulnerability finding.
