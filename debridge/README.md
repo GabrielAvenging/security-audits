@@ -54,3 +54,51 @@ No submission or disclosure was made, and nothing was written to the target repo
 - Dependency resolution and the local lockfile changed for this run. It is not an exact frozen-lockfile reproduction, even though the target source commit was pinned.
 - The earlier missing-Yarn attempt executed zero tests and is separate from the 16 passing result.
 - This page is not an independent security audit, not comprehensive coverage, not a vulnerability search, not proof of production security, and not a validated bounty finding. No vulnerability assessment was performed in this pass.
+
+---
+
+## Nov 9, 2026 follow-up passes
+
+**Date:** November 9, 2026  
+**Same pin:** [`2e9f9c73438738310b5293cec4cffe25741e9b1f`](https://github.com/debridge-finance/debridge-contracts-v1/commit/2e9f9c73438738310b5293cec4cffe25741e9b1f)
+
+Bounded follow-up on the pinned source above. It is separate from the November 6 baseline correctness run. The checks below are local tests on that source.
+
+### (a) Signature confirmation checks
+
+`SignatureVerifier.submit` and DeBridgeGate claim confirmation checks.
+
+| Group | Result |
+|---|---|
+| Existing | 16 passing |
+| Added local tests | 4 passing |
+| **Total** | **20 passing** |
+
+| Hypothesis | Result |
+|---|---|
+| A duplicate signature is accepted | Tested and refuted. The local tests revert the duplicate. |
+| A claim below the minimum confirmation count is accepted | Tested and refuted. The local tests reject it. |
+
+### (b) Fee and withdraw accounting
+
+| Group | Result |
+|---|---|
+| Added local tests | 6 passing |
+| LightDebridge | 18 passing |
+| **Total** | **24 passing** |
+
+| Hypothesis | Result |
+|---|---|
+| `withdrawFee` is available to a caller other than the fee proxy | Tested and refuted. The local tests keep it restricted to the fee proxy. |
+| Fee math does not conserve the amount | Tested and refuted. The local tests keep the amount conserved. |
+
+### Result
+
+**No validated reportable finding in this bounded review; source-only unless noted; nothing submitted.**
+
+No live-network or fork exception is recorded for these two passes.
+
+### Limitations
+
+- The totals are 20 and 24 for the two passes above. They are not a full-protocol run, and they do not replace the November 6 baseline result of 16 passing and 0 failing.
+- These checks do not verify deployed bytecode and do not record a bounty acceptance.
