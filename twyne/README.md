@@ -55,3 +55,56 @@ Previously published audit findings and documented known issues were used as a d
 - Source review plus read-only explorer / bytecode checks and local-fork simulation only; no live-network testing or transaction broadcast.
 - Fork tests exercise selected markets and parameter ranges; they are not an exhaustive proof over all possible vault configurations.
 - Third-party lending-market and oracle behaviour (Euler / Aave / Morpho / Pendle) was treated as external assumption, consistent with the public program’s known-issue posture.
+
+---
+
+## November 9, 2026 follow-up
+
+**Date:** November 9, 2026  
+**Same commit:** [`beb4bf15a70b1a8abcf7e17e8a08f556ee5f84ab`](https://github.com/0xTwyne/twyne-contracts-v1/tree/beb4bf15a70b1a8abcf7e17e8a08f556ee5f84ab)
+
+Additional bounded pass at the same commit as the October review. It does not replace that write-up.
+
+This pass used a read-only mainnet fork through a public RPC. No transactions were sent.
+
+### Coverage
+
+Credit-vault deposit and withdraw, borrow and repay, liquidation and `collateralForBorrower`, external liquidation handling for Euler, Aave, and Morpho, the interest-rate model, BridgeHook, and VaultManager.
+
+### Hypotheses
+
+Tested at that level only. "Refuted" means these checks did not validate a new reportable finding. The closest observations in this pass were already-listed known issues, and they are not restated here.
+
+| Hypothesis | Result |
+|---|---|
+| A new reportable defect in credit-vault deposit or withdraw | Tested and refuted in this pass |
+| A new reportable defect in borrow or repay | Tested and refuted in this pass |
+| A new reportable defect in liquidation or `collateralForBorrower` | Tested and refuted in this pass |
+| A new reportable defect in external liquidation handling (Euler, Aave, Morpho) | Tested and refuted in this pass |
+| A new reportable defect in the interest-rate model | Tested and refuted in this pass |
+| A new reportable defect in BridgeHook | Tested and refuted in this pass |
+| A new reportable defect in VaultManager | Tested and refuted in this pass |
+
+### Recorded checks
+
+| Group | Result |
+|---|---|
+| Existing suite | 840 passing, 0 failing |
+| Added offline | 10 passing |
+| Added read-only fork | 4 passing |
+| **Added total** | **14 passing** |
+
+Three interest-rate-model fuzz tests were run with `DIFFERENTIAL_FUZZ=0`.
+
+### Result
+
+**No validated reportable finding in this bounded review; source-only unless noted; nothing submitted.**
+
+Noted exception: read-only mainnet fork through a public RPC. No transactions were sent.
+
+### Limitations
+
+- Bounded to the surfaces named above at the pinned commit.
+- The fork was read-only. It is not a broadcast test and not a proof over every market configuration.
+- Already-listed known issues were not treated as new findings. Their details are not repeated here.
+- This pass does not record a bounty acceptance.

@@ -49,3 +49,48 @@ Security properties verified as holding on the reviewed surface:
 - Source review only; no live-network testing, forking of production state, or transaction broadcast.
 - Focused on the post–full-audit address-list / transfer-validator surface and related Shares interactions; ACE / CCIP / CRE / Sync* in-scope pins received spot-checks against prior audits rather than a full re-audit.
 - Deployed bytecode was not independently verified against the GitHub pins reviewed here.
+
+---
+
+## November 9, 2026 bounded review
+
+**Date:** November 9, 2026  
+**Reviewed tree:** [`d8a522d6ca58af9dbb831dad2b8045a88952e468`](https://github.com/enzymefinance/protocol-onyx/tree/d8a522d6ca58af9dbb831dad2b8045a88952e468)
+
+Separate bounded pass at the tree above. It does not replace the November 5 diff review.
+
+### Coverage
+
+Sync and ERC-7540 deposit and redeem, the fee handler and trackers, valuation, and shares access control.
+
+### Hypotheses
+
+Tested at that level only. "Refuted" means these checks did not validate a reportable finding.
+
+| Hypothesis | Result |
+|---|---|
+| A reportable defect in sync or ERC-7540 deposit and redeem | Tested and refuted in the tests that ran |
+| A reportable defect in the fee handler or trackers | Tested and refuted in the tests that ran |
+| A reportable defect in valuation | Tested and refuted in the tests that ran |
+| A reportable defect in shares access control | Tested and refuted in the tests that ran |
+
+### Recorded checks
+
+| Group | Result |
+|---|---|
+| Existing | 510 passed |
+| Added | 6 passed |
+| **Executed total** | **516 passed, 0 failed** |
+| Fork / end-to-end | 43 skipped (RPC required; not run) |
+
+### Result
+
+**No validated reportable finding in this bounded review; source-only unless noted; nothing submitted.**
+
+The 516 results are the tests that executed. Forty-three fork and end-to-end tests were skipped because they need an RPC, so those tests are not evidence in this pass.
+
+### Limitations
+
+- Bounded to the surfaces named above at one tree.
+- Skipped fork and end-to-end tests were not executed.
+- This pass does not verify deployed bytecode and does not record a bounty acceptance.
