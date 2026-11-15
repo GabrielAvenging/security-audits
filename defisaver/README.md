@@ -21,7 +21,7 @@ The registry status comes from the repo's own metadata. It was not checked on-ch
 
 ## What was reviewed
 
-- **`CurveUsdSwapperTransient`** (+148/−...), the core change:
+- **`CurveUsdSwapperTransient`** (148 lines changed), the core change:
   - Controller callbacks (`callback_repay`, `callback_deposit`, `callback_liquidate`) are now `nonReentrant`.
   - Collateral and debt tokens now come from the calling controller, not from `exData`, and the swap direction is validated with `InvalidExchangeTokens`.
   - The callback user is recorded in transient storage. `withdrawAll` now pays out only when called by that user.
