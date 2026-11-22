@@ -22,6 +22,7 @@ Public collection of defensive secure source-code reviews, including independent
 | [xORCA (bounded review)](./xorca/) | https://github.com/orca-so/xorca | `05fe66b` | 2026-11-09 |
 | [tBTC v2 (bounded review)](./tbtc-v2/) | https://github.com/threshold-network/tbtc-v2 | `5d2af6c` | 2026-11-09 |
 | [Twyne (Nov 9 follow-up)](./twyne/#november-9-2026-follow-up) | https://github.com/0xTwyne/twyne-contracts-v1 | `beb4bf1` | 2026-11-09 |
+| [DeFi Saver v3 CurveUsd/LlamaLend swappers + Fluid (bounded diff review)](./defisaver/) | https://github.com/defisaver/defisaver-v3-contracts | `26146bf1` → `cae44d54` | 2026-11-14 |
 | [Lista DAO Moolah (bounded review)](./lista-dao/) | https://github.com/lista-dao/moolah | `abf18896` → `284fb57` | 2026-11-20 |
 | [DeFi Saver v3 strategy partial-execution (bounded follow-up)](./defisaver-nov20/) | https://github.com/defisaver/defisaver-v3-contracts | `cae44d54` → `c14d8e35` | 2026-11-20 |
 | [GMTrade / gmx-solana (bounded review)](./gmtrade/) | https://github.com/gmsol-labs/gmx-solana | `d81a3e69` → `3e0a4115` | 2026-11-22 |
@@ -38,7 +39,8 @@ Public collection of defensive secure source-code reviews, including independent
 - deBridge contracts-v1 (2026-11-06) is a baseline run of the existing `test/00_SignatureVerifier.test.js` suite: 16 passing, 0 failing. It is not a security review and does not record a vulnerability finding. The November 9 section on that page is a separate bounded review.
 - November 9, 2026 rows are bounded reviews. Each states: "No validated reportable finding in this bounded review; source-only unless noted; nothing submitted." Twyne's November 9 pass records a read-only mainnet fork over a public RPC and no transactions. Skipped fork tests, suites that did not execute, and the Raydium admin-only hardening note are described in the linked write-ups.
 - November 20 and 22, 2026 rows are bounded reviews. Each states: "No validated reportable finding in this bounded review; source-only, or source-only plus local tests as recorded; nothing submitted." Lista DAO recorded 152 local Foundry tests passing. Sei recorded 2,014 local Go tests passing (7 skipped). DeFi Saver (Nov 20) and Hermetica tests were not run because they need a live-network fork. GMTrade program tests were not run because they need a live test-network connection.
-- The DeFi Saver November 20 write-up is a later range (`cae44d54` → `c14d8e35`) than the CurveUsd/LlamaLend swapper review in [pull request #4](https://github.com/GabrielAvenging/security-audits/pull/4) (`26146bf1` → `cae44d54`, still open). This index does not duplicate that earlier write-up; it will be listed when that pull request is merged.
+- DeFi Saver (2026-11-14) is a bounded diff review: "No validated reportable finding in this bounded review; source-only plus offline unit tests (4 passing); nothing submitted." FluidView changes are in the program-excluded `views` folder.
+- The DeFi Saver November 20 write-up is a later range (`cae44d54` → `c14d8e35`) than the November 14 CurveUsd/LlamaLend swapper review (`26146bf1` → `cae44d54`), and does not duplicate it.
 
 ## Services
 
